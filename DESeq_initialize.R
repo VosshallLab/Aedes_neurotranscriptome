@@ -129,28 +129,25 @@ vstMat_SF_male <- assay(vsd_SF_male)
 
 ## PCA plots of rld and vsd transformed data
 
-data <- plotPCA(rld_SF_male, intgroup=c("tissue", "type","condition"), returnData=TRUE)
-percentVar <- round(100 * attr(data, "percentVar"))
-ggplot(data, aes(PC1, PC2, color=tissue, shape=condition)) +
-  geom_point(size=3) +
-  xlab(paste0("PC1: ",percentVar[1],"% variance")) +
-  ylab(paste0("PC2: ",percentVar[2],"% variance"))
+SF_male_PCA_vsd <- PCA_tissue_condition(vsd_SF_male)
+SF_male_PCA_rld <- PCA_tissue_condition(rld_SF_male)
 
-data_vsd <- plotPCA(vsd_SF_male, intgroup=c("tissue", "type","condition"), returnData=TRUE)
-percentVar <- round(100 * attr(data_vsd, "percentVar"))
-ggplot(data_vsd, aes(PC1, PC2, color=tissue, shape=condition)) +
-  geom_point(size=3) +
-  xlab(paste0("PC1: ",percentVar[1],"% variance")) +
-  ylab(paste0("PC2: ",percentVar[2],"% variance"))
+# data <- plotPCA(rld_SF_male, intgroup=c("tissue", "type","condition"), returnData=TRUE)
+# percentVar <- round(100 * attr(data, "percentVar"))
+# ggplot(data, aes(PC1, PC2, color=tissue, shape=condition)) +
+#   geom_point(size=3) +
+#   xlab(paste0("PC1: ",percentVar[1],"% variance")) +
+#   ylab(paste0("PC2: ",percentVar[2],"% variance"))
+# 
+# data_vsd <- plotPCA(vsd_SF_male, intgroup=c("tissue", "type","condition"), returnData=TRUE)
+# percentVar <- round(100 * attr(data_vsd, "percentVar"))
+# ggplot(data_vsd, aes(PC1, PC2, color=tissue, shape=condition)) +
+#   geom_point(size=3) +
+#   xlab(paste0("PC1: ",percentVar[1],"% variance")) +
+#   ylab(paste0("PC2: ",percentVar[2],"% variance"))
 
 
 ## heatmap of sample-sample euclidian distances
 
-hmcol <- colorRampPalette(brewer.pal(9,"GnBu"))(100)
-distsRL <- dist(t(assay(vsd_SF)))
-mat <- as.matrix(distsRL)
-rownames(mat) <- colnames(mat) <- with(colData(dds), paste(condition, type, sep="-"))
-hc <- hclust(distsRL)
-heatmap.2(mat,Rowv=as.dendrogram(hc),symm=TRUE,trace="none",col=rev(hmcol),margin=c(13,13))
-
+euclidean_heatmap(vsd_SF_male,dds_SF_male)
 
