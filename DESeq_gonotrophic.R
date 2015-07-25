@@ -12,8 +12,8 @@ dds_hindlegs_gono <- DESeqDataSetFromMatrix(countData = raw_FC_reordered_hindleg
 # # perform DESeq2
 dds_hindlegs_gono <- DESeq(dds_hindlegs_gono)
 res_hindlegs_gono <- results(dds_hindlegs_gono)
-rld_hindlegs_gono <- rlog(dds_hindlegs_gono)
-vst_hindlegs_gono <- varianceStabilizingTransformation(dds_hindlegs_gono)
+rld_hindlegs_gono <- rlog(dds_hindlegs_gono,blind=FALSE)
+vst_hindlegs_gono <- varianceStabilizingTransformation(dds_hindlegs_gono,blind=FALSE)
 rlogMat_hindlegs <- assay(rld_hindlegs_gono)
 vstMat_hindlegs <- assay(vst_hindlegs_gono)
 
@@ -36,8 +36,8 @@ dds_brain_gono <- DESeqDataSetFromMatrix(countData = raw_FC_reordered_brain_gono
 # # perform DESeq2
 dds_brain_gono <- DESeq(dds_brain_gono)
 res_brain_gono <- results(dds_brain_gono)
-rld_brain_gono <- rlog(dds_brain_gono)
-vst_brain_gono <- varianceStabilizingTransformation(dds_brain_gono)
+rld_brain_gono <- rlog(dds_brain_gono,blind=FALSE)
+vst_brain_gono <- varianceStabilizingTransformation(dds_brain_gono,blind=FALSE)
 rlogMat_brain <- assay(rld_brain_gono)
 vstMat_brain <- assay(vst_brain_gono)
 
@@ -58,8 +58,8 @@ dds_antenna_gono <- DESeqDataSetFromMatrix(countData = raw_FC_reordered_antenna_
 # # perform DESeq2
 dds_antenna_gono <- DESeq(dds_antenna_gono)
 res_antenna_gono <- results(dds_antenna_gono)
-rld_antenna_gono <- rlog(dds_antenna_gono)
-vst_antenna_gono <- varianceStabilizingTransformation(dds_antenna_gono)
+rld_antenna_gono <- rlog(dds_antenna_gono,blind=FALSE)
+vst_antenna_gono <- varianceStabilizingTransformation(dds_antenna_gono,blind=FALSE)
 rlogMat_antenna <- assay(rld_antenna_gono)
 vstMat_antenna <- assay(vst_antenna_gono)
 
@@ -81,8 +81,8 @@ dds_forelegs_gono <- DESeqDataSetFromMatrix(countData = raw_FC_reordered_foreleg
 # # perform DESeq2
 dds_forelegs_gono <- DESeq(dds_forelegs_gono)
 res_forelegs_gono <- results(dds_forelegs_gono)
-rld_forelegs_gono <- rlog(dds_forelegs_gono)
-vst_forelegs_gono <- varianceStabilizingTransformation(dds_forelegs_gono)
+rld_forelegs_gono <- rlog(dds_forelegs_gono,blind=FALSE)
+vst_forelegs_gono <- varianceStabilizingTransformation(dds_forelegs_gono,blind=FALSE)
 rlogMat_forelegs <- assay(rld_forelegs_gono)
 vstMat_forelegs <- assay(vst_forelegs_gono)
 
@@ -105,8 +105,8 @@ dds_midlegs_gono <- DESeqDataSetFromMatrix(countData = raw_FC_reordered_midlegs_
 # # perform DESeq2
 dds_midlegs_gono <- DESeq(dds_midlegs_gono)
 res_midlegs_gono <- results(dds_midlegs_gono)
-rld_midlegs_gono <- rlog(dds_midlegs_gono)
-vst_midlegs_gono <- varianceStabilizingTransformation(dds_midlegs_gono)
+rld_midlegs_gono <- rlog(dds_midlegs_gono,blind=FALSE)
+vst_midlegs_gono <- varianceStabilizingTransformation(dds_midlegs_gono,blind=FALSE)
 rlogMat_midlegs <- assay(rld_midlegs_gono)
 vstMat_midlegs <- assay(vst_midlegs_gono)
 
@@ -127,8 +127,8 @@ dds_rostrum_gono <- DESeqDataSetFromMatrix(countData = raw_FC_reordered_rostrum_
 # # perform DESeq2
 dds_rostrum_gono <- DESeq(dds_rostrum_gono)
 res_rostrum_gono <- results(dds_rostrum_gono)
-rld_rostrum_gono <- rlog(dds_rostrum_gono)
-vst_rostrum_gono <- varianceStabilizingTransformation(dds_rostrum_gono)
+rld_rostrum_gono <- rlog(dds_rostrum_gono,blind=FALSE)
+vst_rostrum_gono <- varianceStabilizingTransformation(dds_rostrum_gono,blind=FALSE)
 rlogMat_rostrum <- assay(rld_rostrum_gono)
 vstMat_rostrum <- assay(vst_rostrum_gono)
 
@@ -150,8 +150,8 @@ dds_ovaries_gono <- DESeqDataSetFromMatrix(countData = raw_FC_reordered_ovaries_
 # # perform DESeq2
 dds_ovaries_gono <- DESeq(dds_ovaries_gono)
 res_ovaries_gono <- results(dds_ovaries_gono)
-rld_ovaries_gono <- rlog(dds_ovaries_gono)
-vst_ovaries_gono <- varianceStabilizingTransformation(dds_ovaries_gono)
+rld_ovaries_gono <- rlog(dds_ovaries_gono,blind=FALSE)
+vst_ovaries_gono <- varianceStabilizingTransformation(dds_ovaries_gono,blind=FALSE)
 rlogMat_ovaries <- assay(rld_ovaries_gono)
 vstMat_ovaries <- assay(vst_ovaries_gono)
 
@@ -173,8 +173,8 @@ dds_abdominaltip_gono <- DESeqDataSetFromMatrix(countData = raw_FC_reordered_abd
 # # perform DESeq2
 dds_abdominaltip_gono <- DESeq(dds_abdominaltip_gono)
 res_abdominaltip_gono <- results(dds_abdominaltip_gono)
-rld_abdominaltip_gono <- rlog(dds_abdominaltip_gono)
-vst_abdominaltip_gono <- varianceStabilizingTransformation(dds_abdominaltip_gono)
+rld_abdominaltip_gono <- rlog(dds_abdominaltip_gono,blind=FALSE)
+vst_abdominaltip_gono <- varianceStabilizingTransformation(dds_abdominaltip_gono,blind=FALSE)
 rlogMat_abdominaltip <- assay(rld_abdominaltip_gono)
 vstMat_abdominaltip <- assay(vst_abdominaltip_gono)
 
