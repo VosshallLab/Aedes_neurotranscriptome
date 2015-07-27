@@ -23,6 +23,10 @@ ggplot(data, aes(PC1, PC2, color=tissue, shape=condition)) +
   ylab(paste0("PC2: ",percentVar[2],"% variance"))
 }
 
+
+#### TPM/RPKM functions from 
+#### https://haroldpimentel.wordpress.com/2014/05/08/what-the-fpkm-a-review-rna-seq-expression-units/
+
 ### convert raw counts for a single library to TPM - takes gene counts and effective length as vectors
 
 countToTpm <- function(counts, effLen)
@@ -33,22 +37,6 @@ countToTpm <- function(counts, effLen)
 }
 
 
-### convert raw counts for a single library to TPM - takes gene counts and effective length as vectors
-
-countToFpkm <- function(counts, effLen)
-{
-  N <- sum(counts)
-  exp( log(counts) + log(1e9) - log(effLen) - log(N) )
-}
-
-
-### convert FPKM to TPM
-
-fpkmToTpm <- function(fpkm)
-{
-  exp(log(fpkm) - log(sum(fpkm)) + log(1e6))
-}
-
 
 ### count to effective count
 
@@ -57,13 +45,14 @@ countToEffCounts <- function(counts, len, effLen)
   counts * (len / effLen)
 }
 
-
+##################################################
 ## plotting functions from: https://gist.github.com/stephenturner/f60c1934405c127f09a6
 
 ## MA plot
 ## Could do with built-in DESeq2 function:
 ## DESeq2::plotMA(dds, ylim=c(-1,1), cex=1)
 ## I like mine better:
+
 maplot <- function (res, thresh=0.05, labelsig=TRUE, textcx=1, ...) {
   with(res, plot(baseMean, log2FoldChange, pch=20, cex=.5, log="x", ...))
   with(subset(res, padj<thresh), points(baseMean, log2FoldChange, col="red", pch=20, cex=1.5))
