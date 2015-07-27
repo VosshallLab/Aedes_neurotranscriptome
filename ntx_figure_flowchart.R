@@ -11,3 +11,4 @@ source('~/bioinfo/github/ntx_deseq/DESeq_annotation_results.R')
 source('~/bioinfo/github/ntx_deseq/TPM_plots.R')
 
 source('~/bioinfo/github/ntx_deseq/DESeq_gonotrophic.R')
+

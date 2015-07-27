@@ -12,13 +12,13 @@ dds_hindlegs_gono <- DESeqDataSetFromMatrix(countData = rawcounts_with_annotatio
 # # perform DESeq2
 dds_hindlegs_gono <- DESeq(dds_hindlegs_gono)
 res_hindlegs_gono <- results(dds_hindlegs_gono)
-rld_hindlegs_gono <- rlog(dds_hindlegs_gono,blind=FALSE)
+#rld_hindlegs_gono <- rlog(dds_hindlegs_gono,blind=FALSE)
 vst_hindlegs_gono <- varianceStabilizingTransformation(dds_hindlegs_gono,blind=FALSE)
-rlogMat_hindlegs <- assay(rld_hindlegs_gono)
+#rlogMat_hindlegs <- assay(rld_hindlegs_gono)
 vstMat_hindlegs <- assay(vst_hindlegs_gono)
 
 gono_hindlegs_PCA_vst <- PCA_tissue_condition(vst_hindlegs_gono)
-gono_hindlegs_PCA_rld <- PCA_tissue_condition(rld_hindlegs_gono)
+#gono_hindlegs_PCA_rld <- PCA_tissue_condition(rld_hindlegs_gono)
 ############
 
 
@@ -36,13 +36,13 @@ dds_brain_gono <- DESeqDataSetFromMatrix(countData = rawcounts_with_annotation_r
 # # perform DESeq2
 dds_brain_gono <- DESeq(dds_brain_gono)
 res_brain_gono <- results(dds_brain_gono)
-rld_brain_gono <- rlog(dds_brain_gono,blind=FALSE)
+#rld_brain_gono <- rlog(dds_brain_gono,blind=FALSE)
 vst_brain_gono <- varianceStabilizingTransformation(dds_brain_gono,blind=FALSE)
-rlogMat_brain <- assay(rld_brain_gono)
+#rlogMat_brain <- assay(rld_brain_gono)
 vstMat_brain <- assay(vst_brain_gono)
 
 gono_brain_PCA_vst <- PCA_tissue_condition(vst_brain_gono)
-gono_brain_PCA_rld <- PCA_tissue_condition(rld_brain_gono)
+#gono_brain_PCA_rld <- PCA_tissue_condition(rld_brain_gono)
 
 ############################ end of brain example
 
@@ -58,13 +58,13 @@ dds_antenna_gono <- DESeqDataSetFromMatrix(countData = rawcounts_with_annotation
 # # perform DESeq2
 dds_antenna_gono <- DESeq(dds_antenna_gono)
 res_antenna_gono <- results(dds_antenna_gono)
-rld_antenna_gono <- rlog(dds_antenna_gono,blind=FALSE)
+#rld_antenna_gono <- rlog(dds_antenna_gono,blind=FALSE)
 vst_antenna_gono <- varianceStabilizingTransformation(dds_antenna_gono,blind=FALSE)
-rlogMat_antenna <- assay(rld_antenna_gono)
+#rlogMat_antenna <- assay(rld_antenna_gono)
 vstMat_antenna <- assay(vst_antenna_gono)
 
 gono_antenna_PCA_vst <- PCA_tissue_condition(vst_antenna_gono)
-gono_antenna_PCA_rld <- PCA_tissue_condition(rld_antenna_gono)
+#gono_antenna_PCA_rld <- PCA_tissue_condition(rld_antenna_gono)
 ##################
 
 
@@ -81,13 +81,13 @@ dds_forelegs_gono <- DESeqDataSetFromMatrix(countData = rawcounts_with_annotatio
 # # perform DESeq2
 dds_forelegs_gono <- DESeq(dds_forelegs_gono)
 res_forelegs_gono <- results(dds_forelegs_gono)
-rld_forelegs_gono <- rlog(dds_forelegs_gono,blind=FALSE)
+#rld_forelegs_gono <- rlog(dds_forelegs_gono,blind=FALSE)
 vst_forelegs_gono <- varianceStabilizingTransformation(dds_forelegs_gono,blind=FALSE)
-rlogMat_forelegs <- assay(rld_forelegs_gono)
+#rlogMat_forelegs <- assay(rld_forelegs_gono)
 vstMat_forelegs <- assay(vst_forelegs_gono)
 
 gono_forelegs_PCA_vst <- PCA_tissue_condition(vst_forelegs_gono)
-gono_forelegs_PCA_rld <- PCA_tissue_condition(rld_forelegs_gono)
+#gono_forelegs_PCA_rld <- PCA_tissue_condition(rld_forelegs_gono)
 
 #######################
 
@@ -105,13 +105,13 @@ dds_midlegs_gono <- DESeqDataSetFromMatrix(countData = rawcounts_with_annotation
 # # perform DESeq2
 dds_midlegs_gono <- DESeq(dds_midlegs_gono)
 res_midlegs_gono <- results(dds_midlegs_gono)
-rld_midlegs_gono <- rlog(dds_midlegs_gono,blind=FALSE)
+#rld_midlegs_gono <- rlog(dds_midlegs_gono,blind=FALSE)
 vst_midlegs_gono <- varianceStabilizingTransformation(dds_midlegs_gono,blind=FALSE)
-rlogMat_midlegs <- assay(rld_midlegs_gono)
+#rlogMat_midlegs <- assay(rld_midlegs_gono)
 vstMat_midlegs <- assay(vst_midlegs_gono)
 
 gono_midlegs_PCA_vst <- PCA_tissue_condition(vst_midlegs_gono)
-gono_midlegs_PCA_rld <- PCA_tissue_condition(rld_midlegs_gono)
+#gono_midlegs_PCA_rld <- PCA_tissue_condition(rld_midlegs_gono)
 #########
 
 
@@ -127,13 +127,13 @@ dds_rostrum_gono <- DESeqDataSetFromMatrix(countData = rawcounts_with_annotation
 # # perform DESeq2
 dds_rostrum_gono <- DESeq(dds_rostrum_gono)
 res_rostrum_gono <- results(dds_rostrum_gono)
-rld_rostrum_gono <- rlog(dds_rostrum_gono,blind=FALSE)
+#rld_rostrum_gono <- rlog(dds_rostrum_gono,blind=FALSE)
 vst_rostrum_gono <- varianceStabilizingTransformation(dds_rostrum_gono,blind=FALSE)
-rlogMat_rostrum <- assay(rld_rostrum_gono)
+#rlogMat_rostrum <- assay(rld_rostrum_gono)
 vstMat_rostrum <- assay(vst_rostrum_gono)
 
 gono_rostrum_PCA_vst <- PCA_tissue_condition(vst_rostrum_gono)
-gono_rostrum_PCA_rld <- PCA_tissue_condition(rld_rostrum_gono)
+#gono_rostrum_PCA_rld <- PCA_tissue_condition(rld_rostrum_gono)
 
 ########
 
@@ -150,13 +150,13 @@ dds_ovaries_gono <- DESeqDataSetFromMatrix(countData = rawcounts_with_annotation
 # # perform DESeq2
 dds_ovaries_gono <- DESeq(dds_ovaries_gono)
 res_ovaries_gono <- results(dds_ovaries_gono)
-rld_ovaries_gono <- rlog(dds_ovaries_gono,blind=FALSE)
+#rld_ovaries_gono <- rlog(dds_ovaries_gono,blind=FALSE)
 vst_ovaries_gono <- varianceStabilizingTransformation(dds_ovaries_gono,blind=FALSE)
-rlogMat_ovaries <- assay(rld_ovaries_gono)
+#rlogMat_ovaries <- assay(rld_ovaries_gono)
 vstMat_ovaries <- assay(vst_ovaries_gono)
 
 gono_ovaries_PCA_vst <- PCA_tissue_condition(vst_ovaries_gono)
-gono_ovaries_PCA_rld <- PCA_tissue_condition(rld_ovaries_gono)
+#gono_ovaries_PCA_rld <- PCA_tissue_condition(rld_ovaries_gono)
 
 ##########
 
@@ -173,10 +173,12 @@ dds_abdominaltip_gono <- DESeqDataSetFromMatrix(countData = rawcounts_with_annot
 # # perform DESeq2
 dds_abdominaltip_gono <- DESeq(dds_abdominaltip_gono)
 res_abdominaltip_gono <- results(dds_abdominaltip_gono)
-rld_abdominaltip_gono <- rlog(dds_abdominaltip_gono,blind=FALSE)
+#rld_abdominaltip_gono <- rlog(dds_abdominaltip_gono,blind=FALSE)
 vst_abdominaltip_gono <- varianceStabilizingTransformation(dds_abdominaltip_gono,blind=FALSE)
-rlogMat_abdominaltip <- assay(rld_abdominaltip_gono)
+#rlogMat_abdominaltip <- assay(rld_abdominaltip_gono)
 vstMat_abdominaltip <- assay(vst_abdominaltip_gono)
 
 gono_abdominaltip_PCA_vst <- PCA_tissue_condition(vst_abdominaltip_gono)
-gono_abdominaltip_PCA_rld <- PCA_tissue_condition(rld_abdominaltip_gono)
+#gono_abdominaltip_PCA_rld <- PCA_tissue_condition(rld_abdominaltip_gono)
+
+#############

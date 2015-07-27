@@ -69,7 +69,7 @@ family_list <- levels(gene_annotations$gene.family)
 family_list <- family_list[2:length(family_list)]
 
 for (maxTPM in c(2,2.5,3,3.5,4,5)) {
-  for (fam in family_list){
+  for (fam in family_list)  {
     fname = paste(paste(paste("plots",fam,sep="/"),maxTPM,sep="."),"pdf",sep=".")
     genefamily_heatmap(fam,compiled_means,fname,maxTPM)
   }
