@@ -1,3 +1,6 @@
+library(RColorBrewer)
+library(viridis)
+
 libprop_SF_and_male <- libprop[libprop$condition %in% c("male","SF") & libprop$keep == 1,]
 
 tpm_male_SF <- subset(tpm_all_with_annotation,select=c(row.names(libprop_SF_and_male),colnames(gene_annotations)))
@@ -41,7 +44,6 @@ for (tissue in tissue_list)
   compiled_medians <- rename(compiled_medians,replace = c("temp_median" = tissue))
   }
 
-library(RColorBrewer)
 
 genefamily_heatmap <- function(genefam,tpmMat) {
  
@@ -56,8 +58,9 @@ genefamily_heatmap <- function(genefam,tpmMat) {
   heatmap.2(log10(as.matrix(family_subset)+1),dendrogram="none",Colv=FALSE,colsep=c(3,10),sepwidth=c(.5,.5),
             trace="none",labCol=column_labels,srtCol=45,density.info="none",labRow=disp_name,
             key.xlab="Log10(TPM)",key.title=NA,
-            col=colorRampPalette( rev(brewer.pal(9, "RdBu")) )(255)
-           #  col = colorRampPalette(rev(brewer.pal(9,"Blues")))(255) 
+            col = colorRampPalette( rev(brewer.pal(9, "RdBu")) )(255)
+           # col = colorRampPalette(rev(brewer.pal(9,"Blues")))(255) 
+           # col = rev(viridis(100))
            )
 }
 

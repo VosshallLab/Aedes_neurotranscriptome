@@ -25,4 +25,4 @@ SF_male_PCA_vst <- PCA_tissue_condition(vst_SF_male)
 
 ## euclidean heatmap plot of vst transformed data
 
-SF_male_heatmap_vst <- euclidean_heatmap(vst_SF_male,dds_SF_male)
+SF_male_heatmap_vst <- euclidean_heatmap(vst_SF_male,dds_SF_male_combined)
