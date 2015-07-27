@@ -56,8 +56,8 @@ genefamily_heatmap <- function(genefam,tpmMat) {
   heatmap.2(log10(as.matrix(family_subset)+1),dendrogram="none",Colv=FALSE,colsep=c(3,10),sepwidth=c(.5,.5),
             trace="none",labCol=column_labels,srtCol=45,density.info="none",labRow=disp_name,
             key.xlab="Log10(TPM)",key.title=NA,
-           # col=colorRampPalette( rev(brewer.pal(9, "RdBu")) )(255)
-            col = colorRampPalette(rev(brewer.pal(9,"Blues")))(255) 
+            col=colorRampPalette( rev(brewer.pal(9, "RdBu")) )(255)
+           #  col = colorRampPalette(rev(brewer.pal(9,"Blues")))(255) 
            )
 }
 
