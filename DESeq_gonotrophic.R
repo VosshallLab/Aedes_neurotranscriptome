@@ -4,10 +4,10 @@
 libprop_hindlegs_gono <- libprop[libprop$tissue %in% c("hindlegs") & libprop$keep == 1 & libprop$type %in% c("single"),]   
 # 
 # # count matrix from selected libraries
-raw_FC_reordered_hindlegs_gono <- subset(raw_FC_reordered,select=row.names(libprop_hindlegs_gono))
+rawcounts_with_annotation_reordered_hindlegs_gono <- subset(rawcounts_with_annotation_reordered,select=row.names(libprop_hindlegs_gono))
 # 
 # # model design - condition is the variable
-dds_hindlegs_gono <- DESeqDataSetFromMatrix(countData = raw_FC_reordered_hindlegs_gono, colData = libprop_hindlegs_gono, design = ~ condition)
+dds_hindlegs_gono <- DESeqDataSetFromMatrix(countData = rawcounts_with_annotation_reordered_hindlegs_gono, colData = libprop_hindlegs_gono, design = ~ condition)
 # 
 # # perform DESeq2
 dds_hindlegs_gono <- DESeq(dds_hindlegs_gono)
@@ -28,10 +28,10 @@ gono_hindlegs_PCA_rld <- PCA_tissue_condition(rld_hindlegs_gono)
 libprop_brain_gono <- libprop[libprop$tissue %in% c("brain") & libprop$keep == 1 & libprop$type %in% c("single"),]   
 # 
 # # count matrix from selected libraries
-raw_FC_reordered_brain_gono <- subset(raw_FC_reordered,select=row.names(libprop_brain_gono))
+rawcounts_with_annotation_reordered_brain_gono <- subset(rawcounts_with_annotation_reordered,select=row.names(libprop_brain_gono))
 # 
 # # model design - condition is the variable
-dds_brain_gono <- DESeqDataSetFromMatrix(countData = raw_FC_reordered_brain_gono, colData = libprop_brain_gono, design = ~ condition)
+dds_brain_gono <- DESeqDataSetFromMatrix(countData = rawcounts_with_annotation_reordered_brain_gono, colData = libprop_brain_gono, design = ~ condition)
 # 
 # # perform DESeq2
 dds_brain_gono <- DESeq(dds_brain_gono)
@@ -50,10 +50,10 @@ gono_brain_PCA_rld <- PCA_tissue_condition(rld_brain_gono)
 libprop_antenna_gono <- libprop[libprop$tissue %in% c("antenna") & libprop$keep == 1 & libprop$type %in% c("single"),]   
 # 
 # # count matrix from selected libraries
-raw_FC_reordered_antenna_gono <- subset(raw_FC_reordered,select=row.names(libprop_antenna_gono))
+rawcounts_with_annotation_reordered_antenna_gono <- subset(rawcounts_with_annotation_reordered,select=row.names(libprop_antenna_gono))
 # 
 # # model design - condition is the variable
-dds_antenna_gono <- DESeqDataSetFromMatrix(countData = raw_FC_reordered_antenna_gono, colData = libprop_antenna_gono, design = ~ condition)
+dds_antenna_gono <- DESeqDataSetFromMatrix(countData = rawcounts_with_annotation_reordered_antenna_gono, colData = libprop_antenna_gono, design = ~ condition)
 # 
 # # perform DESeq2
 dds_antenna_gono <- DESeq(dds_antenna_gono)
@@ -73,10 +73,10 @@ gono_antenna_PCA_rld <- PCA_tissue_condition(rld_antenna_gono)
 libprop_forelegs_gono <- libprop[libprop$tissue %in% c("forelegs") & libprop$keep == 1 & libprop$type %in% c("single"),]   
 # 
 # # count matrix from selected libraries
-raw_FC_reordered_forelegs_gono <- subset(raw_FC_reordered,select=row.names(libprop_forelegs_gono))
+rawcounts_with_annotation_reordered_forelegs_gono <- subset(rawcounts_with_annotation_reordered,select=row.names(libprop_forelegs_gono))
 # 
 # # model design - condition is the variable
-dds_forelegs_gono <- DESeqDataSetFromMatrix(countData = raw_FC_reordered_forelegs_gono, colData = libprop_forelegs_gono, design = ~ condition)
+dds_forelegs_gono <- DESeqDataSetFromMatrix(countData = rawcounts_with_annotation_reordered_forelegs_gono, colData = libprop_forelegs_gono, design = ~ condition)
 # 
 # # perform DESeq2
 dds_forelegs_gono <- DESeq(dds_forelegs_gono)
@@ -97,10 +97,10 @@ gono_forelegs_PCA_rld <- PCA_tissue_condition(rld_forelegs_gono)
 libprop_midlegs_gono <- libprop[libprop$tissue %in% c("midlegs") & libprop$keep == 1 & libprop$type %in% c("single"),]   
 # 
 # # count matrix from selected libraries
-raw_FC_reordered_midlegs_gono <- subset(raw_FC_reordered,select=row.names(libprop_midlegs_gono))
+rawcounts_with_annotation_reordered_midlegs_gono <- subset(rawcounts_with_annotation_reordered,select=row.names(libprop_midlegs_gono))
 # 
 # # model design - condition is the variable
-dds_midlegs_gono <- DESeqDataSetFromMatrix(countData = raw_FC_reordered_midlegs_gono, colData = libprop_midlegs_gono, design = ~ condition)
+dds_midlegs_gono <- DESeqDataSetFromMatrix(countData = rawcounts_with_annotation_reordered_midlegs_gono, colData = libprop_midlegs_gono, design = ~ condition)
 # 
 # # perform DESeq2
 dds_midlegs_gono <- DESeq(dds_midlegs_gono)
@@ -119,10 +119,10 @@ gono_midlegs_PCA_rld <- PCA_tissue_condition(rld_midlegs_gono)
 libprop_rostrum_gono <- libprop[libprop$tissue %in% c("rostrum") & libprop$keep == 1 & libprop$type %in% c("single"),]   
 # 
 # # count matrix from selected libraries
-raw_FC_reordered_rostrum_gono <- subset(raw_FC_reordered,select=row.names(libprop_rostrum_gono))
+rawcounts_with_annotation_reordered_rostrum_gono <- subset(rawcounts_with_annotation_reordered,select=row.names(libprop_rostrum_gono))
 # 
 # # model design - condition is the variable
-dds_rostrum_gono <- DESeqDataSetFromMatrix(countData = raw_FC_reordered_rostrum_gono, colData = libprop_rostrum_gono, design = ~ condition)
+dds_rostrum_gono <- DESeqDataSetFromMatrix(countData = rawcounts_with_annotation_reordered_rostrum_gono, colData = libprop_rostrum_gono, design = ~ condition)
 # 
 # # perform DESeq2
 dds_rostrum_gono <- DESeq(dds_rostrum_gono)
@@ -142,10 +142,10 @@ gono_rostrum_PCA_rld <- PCA_tissue_condition(rld_rostrum_gono)
 libprop_ovaries_gono <- libprop[libprop$tissue %in% c("ovaries") & libprop$keep == 1 & libprop$type %in% c("paired"),]   
 # 
 # # count matrix from selected libraries
-raw_FC_reordered_ovaries_gono <- subset(raw_FC_reordered,select=row.names(libprop_ovaries_gono))
+rawcounts_with_annotation_reordered_ovaries_gono <- subset(rawcounts_with_annotation_reordered,select=row.names(libprop_ovaries_gono))
 # 
 # # model design - condition is the variable
-dds_ovaries_gono <- DESeqDataSetFromMatrix(countData = raw_FC_reordered_ovaries_gono, colData = libprop_ovaries_gono, design = ~ condition)
+dds_ovaries_gono <- DESeqDataSetFromMatrix(countData = rawcounts_with_annotation_reordered_ovaries_gono, colData = libprop_ovaries_gono, design = ~ condition)
 # 
 # # perform DESeq2
 dds_ovaries_gono <- DESeq(dds_ovaries_gono)
@@ -165,10 +165,10 @@ gono_ovaries_PCA_rld <- PCA_tissue_condition(rld_ovaries_gono)
 libprop_abdominaltip_gono <- libprop[libprop$tissue %in% c("abdominaltip") & libprop$keep == 1 & libprop$type %in% c("single"),]   
 # 
 # # count matrix from selected libraries
-raw_FC_reordered_abdominaltip_gono <- subset(raw_FC_reordered,select=row.names(libprop_abdominaltip_gono))
+rawcounts_with_annotation_reordered_abdominaltip_gono <- subset(rawcounts_with_annotation_reordered,select=row.names(libprop_abdominaltip_gono))
 # 
 # # model design - condition is the variable
-dds_abdominaltip_gono <- DESeqDataSetFromMatrix(countData = raw_FC_reordered_abdominaltip_gono, colData = libprop_abdominaltip_gono, design = ~ condition)
+dds_abdominaltip_gono <- DESeqDataSetFromMatrix(countData = rawcounts_with_annotation_reordered_abdominaltip_gono, colData = libprop_abdominaltip_gono, design = ~ condition)
 # 
 # # perform DESeq2
 dds_abdominaltip_gono <- DESeq(dds_abdominaltip_gono)
