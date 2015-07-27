@@ -45,23 +45,33 @@ for (tissue in tissue_list)
   }
 
 
-genefamily_heatmap <- function(genefam,tpmMat) {
+genefamily_heatmap <- function(genefam,tpmMat,fname,maxTPM) {
  
+  pdf(file=fname,width=8)
+  
   family_subset <- tpmMat[tpmMat$gene.family %in% genefam,]
 #  row.names(family_subset) <- family_subset$display.name
   disp_name <- family_subset$display.name
   family_subset <- subset(family_subset,select=tissue_list)
   column_labels <- c("Ovaries","Palp","Proboscis","Brain","Antenna","Rostrum","Forelegs","Midlegs","Hindlegs","Abdominal tip","Brain","Antenna","Rostrum","Forelegs","Midlegs","Hindlegs","Abdominal tip")
- 
-  
-  
   heatmap.2(log10(as.matrix(family_subset)+1),dendrogram="none",Colv=FALSE,colsep=c(3,10),sepwidth=c(.5,.5),
             trace="none",labCol=column_labels,srtCol=45,density.info="none",labRow=disp_name,
             key.xlab="Log10(TPM)",key.title=NA,
+            breaks= seq(0,maxTPM,length.out=256),
             col = colorRampPalette( rev(brewer.pal(9, "RdBu")) )(255)
            # col = colorRampPalette(rev(brewer.pal(9,"Blues")))(255) 
            # col = rev(viridis(100))
            )
+  dev.off()
 }
 
-genefamily_heatmap("OR",compiled_means)
+family_list <- levels(gene_annotations$gene.family)
+family_list <- family_list[2:length(family_list)]
+
+for (maxTPM in c(2,3,4,5)) {
+for (fam in family_list){
+  fname = paste(paste(paste("plots",fam,sep="/"),maxTPM,sep="."),"pdf",sep=".")
+  genefamily_heatmap(fam,compiled_means,fname,maxTPM)
+}}
+
+
