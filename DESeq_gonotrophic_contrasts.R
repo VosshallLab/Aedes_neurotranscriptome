@@ -105,11 +105,11 @@ pdf("plots/gono/MA_O_forelegs.pdf",width=6)
 plotMA(O_forelegs,ylim=c(-5,5))
 dev.off()
 
-pdf("plots/gono/MA_O_ovaries.pdf",width=6)
+#pdf("plots/gono/MA_O_ovaries.pdf",width=6)
 plotMA(O_ovaries,ylim=c(-5,5))
-dev.off()
+#dev.off()
 
-pdf("plots/gono/MA_O_abdominal_tip.pdf",width=6)
+#pdf("plots/gono/MA_O_abdominal_tip.pdf",width=6)
 plotMA(O_at,ylim=c(-5,5))
-dev.off()
+#dev.off()
 
