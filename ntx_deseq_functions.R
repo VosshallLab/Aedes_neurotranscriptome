@@ -1,5 +1,23 @@
 ### PCA plot by tissue and condition
 
+dimorphism_heatmap <- function(gene_list,tpmMat,maxTPM) {
+  
+  family_subset <- tpmMat[tpmMat$internal.gene_id %in% gene_list,]
+  #  row.names(family_subset) <- family_subset$display.name
+  disp_name <- paste(family_subset$vectorbase.RU,family_subset$display.name,sep="-")
+  family_subset <- subset(family_subset,select=tissue_list)
+  column_labels <- c("Ovaries","Palp","Proboscis","Brain","Antenna","Rostrum","Forelegs","Midlegs","Hindlegs","Abdominal tip","Brain","Antenna","Rostrum","Forelegs","Midlegs","Hindlegs","Abdominal tip")
+  heatmap.2(log10(as.matrix(family_subset)+1),dendrogram="none",Colv=FALSE,sepwidth=c(.5,.5),
+            trace="none",labCol=column_labels,srtCol=45,density.info="none",labRow=disp_name,
+            key.xlab="Log10(TPM+1)",key.title=NA,
+            #scale = "row",
+            breaks= seq(0,maxTPM,length.out=256),
+            col = colorRampPalette( rev(brewer.pal(9, "RdBu")) )(255)
+            # col = colorRampPalette(rev(brewer.pal(9,"Blues")))(255) 
+            # col = rev(viridis(100))
+  )
+}
+
 
 euclidean_heatmap <- function(deseq,cols)
 {
