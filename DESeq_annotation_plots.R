@@ -11,6 +11,7 @@ dds_SF_male_combined <- DESeqDataSetFromMatrix(countData = rawcounts_reordered_S
                                       colData = libprop_SF_and_male,
                                       design = ~ type + tissue_condition )
 
+
 ### perform DESeq
 
 dds_SF_male_combined <- DESeq(dds_SF_male_combined)

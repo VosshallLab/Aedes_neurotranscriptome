@@ -40,7 +40,7 @@ O_antenna[!is.na(O_antenna$padj) & O_antenna$padj < 0.05,] -> sigO_antenna
 ## foreleg
 
 O_forelegs <- results(dds_forelegs_gono,alpha=0.05,contrast=c("condition","SF","O"))
-O_forelegs[!is.na(O_foreleg$padj) & O_forelegs$padj < 0.05,] -> sigO_foreleg
+O_forelegs[!is.na(O_forelegs$padj) & O_forelegs$padj < 0.05,] -> sigO_foreleg
 
 
 ## midleg
