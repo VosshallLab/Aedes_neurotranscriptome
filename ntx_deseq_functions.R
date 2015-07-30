@@ -18,6 +18,19 @@ dimorphism_heatmap <- function(gene_list,tpmMat,maxTPM) {
   )
 }
 
+### function to find a specific tissue from the whole TPM matrix
+
+subset_TPM <- function(tissue_to_find,tpm){
+  
+  selection <- grepl(tissue_to_find,colnames(tpm))
+  tpm_sub <- tpm[,selection]
+  temp_mean <- apply(tpm_sub,1,mean)
+  temp_median <- apply(tpm_sub,1,median)
+  tpm_sub$median <- temp_median
+  tpm_sub$mean <- temp_mean
+  tpm_sub
+}
+
 
 euclidean_heatmap <- function(deseq,cols)
 {
@@ -29,6 +42,13 @@ euclidean_heatmap <- function(deseq,cols)
   heatmap.2(mat,Rowv=as.dendrogram(hc),symm=TRUE,trace="none",col=rev(hmcol),margin=c(13,13))
 
 }
+
+TPM_one_gene <- function(dds,gene,group){
+  
+  d <- plotCounts(dds, gene=gene, intgroup=group, returnData=TRUE)
+  ggplot(d, aes(x=condition, y=count)) + geom_point(position=position_jitter(w=0.1,h=0)) + scale_y_log10(breaks=c(0,100,1000))
+
+  }
 
 
 PCA_tissue_condition <- function(deseq)
@@ -94,3 +114,47 @@ volcanoplot <- function (res, lfcthresh=2, sigthresh=0.05, main="Volcano Plot", 
   legend(legendpos, xjust=1, yjust=1, legend=c(paste("FDR<",sigthresh,sep=""), paste("|LogFC|>",lfcthresh,sep=""), "both"), pch=20, col=c("red","orange","green"))
 }
 
+### cluster heatmap plots
+
+hclustfunc <- function(x) hclust(x, method="complete")
+distfunc <- function(x) dist(x, method="euclidean")
+
+
+# inspired by http://stackoverflow.com/questions/22278508/how-to-add-colsidecolors-on-heatmap-2-after-performing-bi-clustering-row-and-co
+
+heatmap_with_cluster <- function(mydata,tissue,clustNum) 
+{
+  
+  
+  
+  rowLabels <- updated_annotations[updated_annotations$internal.gene_id %in% row.names(mydata),]
+  
+  cl.row <- hclustfunc(distfunc(mydata))
+  
+  # extract cluster assignments; i.e. k=8 (rows) k=5 (columns)
+  gr.row <- cutree(cl.row, clustNum)
+  
+  # require(RColorBrewer)
+  col1 <- brewer.pal(clustNum, "Set1")
+  
+  # require(gplots)
+  
+  pdf(file = paste(tissue,'_cluster_plot_zscore.pdf'),width=12,height=24)
+  
+  heatmap.2(as.matrix(mydata), hclustfun=hclustfunc, distfun=distfunc,   
+            RowSideColors=col1[gr.row],trace="none",dendrogram="row",
+            Rowv = reorder(as.dendrogram(cl.row),1:clustNum),
+            col=colorRampPalette( rev(brewer.pal(9, "RdBu")) )(255),main=tissue,
+            Colv = "none")#,labCol = c("non-blood-fed","blood-fed","gravid"))
+  
+  dev.off()
+  
+  cluster_data <- as.data.frame(gr.row)
+  cluster_data$internal.gene_id = row.names(cluster_data)
+  merge(cluster_data,updated_annotations,by="internal.gene_id") -> cluster_data
+  
+  write.csv(cluster_data,paste(tissue,'_cluster_data.csv',sep=''))
+  
+  return(cluster_data)
+  
+}

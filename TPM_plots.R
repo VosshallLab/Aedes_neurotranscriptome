@@ -11,19 +11,6 @@ tpm_male_SF <- subset(tpm_all_with_annotation,select=c(row.names(libprop_SF_and_
 tissue_list <- c("Fe_Ov_SF","Fe_Pa_SF","Fe_Os_SF","Fe_Br_SF","Fe_An_SF","Fe_Rs_SF","Fe_FL_SF","Fe_ML_SF","FE_HL_SF","Fe_At_SF","Ma_Br","Ma_An","Ma_Rs","Ma_FL","Ma_ML","Ma_HL","Ma_At")
 
 
-### function to find a specific tissue from the whole TPM matrix
-
-subset_TPM <- function(tissue_to_find,tpm){
-  
-  selection <- grepl(tissue_to_find,colnames(tpm))
-  tpm_sub <- tpm[,selection]
-  temp_mean <- apply(tpm_sub,1,mean)
-  temp_median <- apply(tpm_sub,1,median)
-  tpm_sub$median <- temp_median
-  tpm_sub$mean <- temp_mean
-  tpm_sub
-}
-
 ### create appropriate empty vectors for tissue means and medians
 
 compiled_means <- gene_annotations
