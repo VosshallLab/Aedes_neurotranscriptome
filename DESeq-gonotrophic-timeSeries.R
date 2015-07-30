@@ -146,12 +146,12 @@ names(gr.row[gr.row == 5]) -> clust5
 names(gr.row[gr.row == 6]) -> clust6
 names(gr.row[gr.row == 7]) -> clust7
 
-vbase <- read.csv('~/Downloads/mart_export-2.txt',sep="\t")
-description7 <- vbase[vbase$Gene.stable.ID %in% gene_annotations[gene_annotations$internal.gene_id %in% clust7,]$vectorbase.RU,]
-description6 <- vbase[vbase$Gene.stable.ID %in% gene_annotations[gene_annotations$internal.gene_id %in% clust6,]$vectorbase.RU,]
-description5 <- vbase[vbase$Gene.stable.ID %in% gene_annotations[gene_annotations$internal.gene_id %in% clust5,]$vectorbase.RU,]
-description4 <- vbase[vbase$Gene.stable.ID %in% gene_annotations[gene_annotations$internal.gene_id %in% clust4,]$vectorbase.RU,]
-description3 <- vbase[vbase$Gene.stable.ID %in% gene_annotations[gene_annotations$internal.gene_id %in% clust3,]$vectorbase.RU,]
-description2 <- vbase[vbase$Gene.stable.ID %in% gene_annotations[gene_annotations$internal.gene_id %in% clust2,]$vectorbase.RU,]
-description1 <- vbase[vbase$Gene.stable.ID %in% gene_annotations[gene_annotations$internal.gene_id %in% clust1,]$vectorbase.RU,]
+#vbase <- read.csv('~/Downloads/mart_export-2.txt',sep="\t")
+# description7 <- vbase[vbase$Gene.stable.ID %in% gene_annotations[gene_annotations$internal.gene_id %in% clust7,]$vectorbase.RU,]
+# description6 <- vbase[vbase$Gene.stable.ID %in% gene_annotations[gene_annotations$internal.gene_id %in% clust6,]$vectorbase.RU,]
+# description5 <- vbase[vbase$Gene.stable.ID %in% gene_annotations[gene_annotations$internal.gene_id %in% clust5,]$vectorbase.RU,]
+# description4 <- vbase[vbase$Gene.stable.ID %in% gene_annotations[gene_annotations$internal.gene_id %in% clust4,]$vectorbase.RU,]
+# description3 <- vbase[vbase$Gene.stable.ID %in% gene_annotations[gene_annotations$internal.gene_id %in% clust3,]$vectorbase.RU,]
+# description2 <- vbase[vbase$Gene.stable.ID %in% gene_annotations[gene_annotations$internal.gene_id %in% clust2,]$vectorbase.RU,]
+# description1 <- vbase[vbase$Gene.stable.ID %in% gene_annotations[gene_annotations$internal.gene_id %in% clust1,]$vectorbase.RU,]
 
