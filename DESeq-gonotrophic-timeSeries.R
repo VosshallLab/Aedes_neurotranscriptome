@@ -7,6 +7,16 @@
 
 ####################
 # brain as example
+resovaries_sfo <- results(dds_ovaries_gono,contrast=c("condition","SF","O"))
+
+ovaries_modulated <- vstMat_brain[resovaries_sfo$padj < 0.01,]
+row.names(ovaries_modulated[!is.na(row.names(ovaries_modulated)),]) -> modGenesovaries
+
+ovaries_FCs <- data.frame("row.names" = row.names(resovaries_sfo), "sfo" = resovaries_sfo$log2FoldChange)
+
+
+####################
+# brain as example
 resbrain_sfbf <- results(dds_brain_gono,contrast=c("condition","SF","BF"))
 resbrain_sfo <- results(dds_brain_gono,contrast=c("condition","SF","O"))
 
@@ -55,8 +65,8 @@ z.expMat <- as.data.frame(t(apply((expMat[row.names(expMat) %in% modGenesbrain,]
 
 heatmap.2(as.matrix(z.expMat),
           trace="none",symm=TRUE,Colv="none",
-          col=colorRampPalette( rev(brewer.pal(9, "RdBu")) )(255),dendrogram="none",
-          labCol = c("non-blood-fed","blood-fed","gravid"),main="brain",trace="none")
+          col=colorRampPalette( rev(brewer.pal(9, "RdBu")) )(255),dendrogram="row",
+          labCol = c("non-blood-fed","blood-fed","gravid"),main="brain")
 
 #################################
 # z-score clustering and heatmaps
@@ -70,8 +80,8 @@ z.expMat <- as.data.frame(t(apply((expMat[row.names(expMat) %in% modGenesantenna
 
 heatmap.2(as.matrix(z.expMat),
           trace="none",symm=TRUE,Colv="none",
-          col=colorRampPalette( rev(brewer.pal(9, "RdBu")) )(255),dendrogram="none",
-          labCol = c("non-blood-fed","blood-fed","gravid"),main="antenna",trace="none")
+          col=colorRampPalette( rev(brewer.pal(9, "RdBu")) )(255),dendrogram="row",
+          labCol = c("non-blood-fed","blood-fed","gravid"),main="antenna")
 
 #################################
 # z-score clustering and heatmaps
@@ -85,5 +95,63 @@ z.expMat <- as.data.frame(t(apply((expMat[row.names(expMat) %in% modGeneshindleg
 
 heatmap.2(as.matrix(z.expMat),
           trace="none",symm=TRUE,Colv="none",
-          col=colorRampPalette( rev(brewer.pal(9, "RdBu")) )(255),dendrogram="none",
-          labCol = c("non-blood-fed","blood-fed","gravid"),main="hindlegs",trace="none")
+          col=colorRampPalette( rev(brewer.pal(9, "RdBu")) )(255),dendrogram="row",
+          labCol = c("non-blood-fed","blood-fed","gravid"),main="hindlegs")
+
+#################################
+# z-score clustering and heatmaps
+########## ovaries
+
+# expMat <- data.frame("sf" = resovaries_sfo$baseMean,"o"=resovaries_sfo$baseMean * (2^resovaries_sfo$log2FoldChange))
+# row.names(expMat) = row.names(resovaries_sfo)
+# 
+# ## z-score heatmap
+# z.expMat <- as.data.frame(t(apply((expMat[row.names(expMat) %in% modGenesovaries,]), MARGIN = 1, FUN = scale )))
+# 
+# heatmap.2(as.matrix(z.expMat),
+#           trace="none",symm=TRUE,Colv="none",
+#           col=colorRampPalette( rev(brewer.pal(9, "RdBu")) )(255),dendrogram="none",
+#           labCol = c("non-blood-fed","gravid"),main="ovaries")
+
+
+
+#### trying to cluster as well  - http://stackoverflow.com/questions/22278508/how-to-add-colsidecolors-on-heatmap-2-after-performing-bi-clustering-row-and-co
+
+hclustfunc <- function(x) hclust(x, method="complete")
+distfunc <- function(x) dist(x, method="euclidean")
+
+mydata = z.expMat
+
+cl.row <- hclustfunc(distfunc(mydata))
+
+# extract cluster assignments; i.e. k=8 (rows) k=5 (columns)
+gr.row <- cutree(cl.row, 7)
+
+# require(RColorBrewer)
+col1 <- brewer.pal(7, "Set1")
+
+# require(gplots)    
+heatmap.2(as.matrix(mydata), hclustfun=hclustfunc, distfun=distfunc,   
+          RowSideColors=col1[gr.row],trace="none",dendrogram="row",
+          Rowv = reorder(as.dendrogram(cl.row),c(1,2,3,4,5,6,7)),
+          col=colorRampPalette( rev(brewer.pal(9, "RdBu")) )(255),
+          Colv = "none",labCol = c("non-blood-fed","blood-fed","gravid")
+          )
+
+names(gr.row[gr.row == 1]) -> clust1
+names(gr.row[gr.row == 2]) -> clust2
+names(gr.row[gr.row == 3]) -> clust3
+names(gr.row[gr.row == 4]) -> clust4
+names(gr.row[gr.row == 5]) -> clust5
+names(gr.row[gr.row == 6]) -> clust6
+names(gr.row[gr.row == 7]) -> clust7
+
+vbase <- read.csv('~/Downloads/mart_export-2.txt',sep="\t")
+description7 <- vbase[vbase$Gene.stable.ID %in% gene_annotations[gene_annotations$internal.gene_id %in% clust7,]$vectorbase.RU,]
+description6 <- vbase[vbase$Gene.stable.ID %in% gene_annotations[gene_annotations$internal.gene_id %in% clust6,]$vectorbase.RU,]
+description5 <- vbase[vbase$Gene.stable.ID %in% gene_annotations[gene_annotations$internal.gene_id %in% clust5,]$vectorbase.RU,]
+description4 <- vbase[vbase$Gene.stable.ID %in% gene_annotations[gene_annotations$internal.gene_id %in% clust4,]$vectorbase.RU,]
+description3 <- vbase[vbase$Gene.stable.ID %in% gene_annotations[gene_annotations$internal.gene_id %in% clust3,]$vectorbase.RU,]
+description2 <- vbase[vbase$Gene.stable.ID %in% gene_annotations[gene_annotations$internal.gene_id %in% clust2,]$vectorbase.RU,]
+description1 <- vbase[vbase$Gene.stable.ID %in% gene_annotations[gene_annotations$internal.gene_id %in% clust1,]$vectorbase.RU,]
+
