@@ -175,4 +175,17 @@ tpm.Z.interesting <- as.data.frame(t(apply((hindlegs_gono_mean[,c("SF","BF","O")
 colnames(tpm.Z.interesting) <- c("SF","BF","O")
 heatmap_with_cluster(tpm.Z.interesting,'hindlegs',4)
 
+##############
+antenna_gene4252.tpm <- antenna.tpm["gene4252",]
+orlist <- c("gene13247","gene14944","gene15193","gene15909","gene2482","gene2976","gene3236","gene4613","gene5735")
+or_tpm <- melt(antenna.tpm[which(row.names(antenna.tpm) %in% orlist),] )
+or_tpm$condition <- c(rep("BF",36),rep("O",27),rep("SF",36))
+or_tpm$condition_ordered <- factor(or_tpm$condition, levels = c("SF","BF","O"))
+or_tpm.plot <- ggplot(data=or_tpm,aes(x=condition_ordered,y=value)) +geom_boxplot() + geom_point() + facet_wrap(~Var1,scales = "free")
+
+orlist <- c("gene7459","gene9065")
+or_tpm <- melt(antenna.tpm[which(row.names(antenna.tpm) %in% orlist),] )
+or_tpm$condition <- c(rep("BF",8),rep("O",6),rep("SF",8))
+or_tpm$condition_ordered <- factor(or_tpm$condition, levels = c("SF","BF","O"))
+or_tpm.plot <- ggplot(data=or_tpm,aes(x=condition_ordered,y=value)) +geom_boxplot() + geom_point() + facet_wrap(~Var1,scales = "free")
 
