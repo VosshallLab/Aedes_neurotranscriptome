@@ -53,6 +53,8 @@ hindlegs_FCs <- data.frame("row.names" = row.names(reshindlegs_sfbf), "sfbf" = r
 
 #heatmap.2(as.matrix(hindlegs_FCs[row.names(hindlegs_FCs) %in% modGeneshindlegs,]),trace="none",breaks=seq(-2,2,length.out=256),col=colorRampPalette( rev(brewer.pal(9, "RdBu")) )(255))
 
+
+#################################
 ##### re-do Z-score based on TPM
 
 ### antenna
@@ -81,6 +83,9 @@ antenna_up_early <- subset(antenna_reg_genes,gr.row==1)
 antenna_up_late <- subset(antenna_reg_genes,gr.row==3)
 antenna_down_early <- subset(antenna_reg_genes,gr.row==4)
 antenna_down_late <- subset(antenna_reg_genes,gr.row==7)
+
+antenna_up_transient <- subset(antenna_reg_genes,gr.row %in% c(2,5))
+antenna_down_transient <- subset(antenna_reg_genes,gr.row %in% c(6,8))
 
 all_interesting_antenna <- subset(antenna_reg_genes,gr.row %in% c(1,3,4,7))
 
@@ -112,12 +117,15 @@ colnames(tpm.Z) <- c("SF","BF","O")
 
 brain_reg_genes <- heatmap_with_cluster(tpm.Z,'brain',8)
 
-brain_up_early <- subset(brain_reg_genes,gr.row %in% c(4,7))
+brain_up_early <- subset(brain_reg_genes,gr.row %in% c(8,7))
 brain_up_late <- subset(brain_reg_genes,gr.row==6)
 brain_down_early <- subset(brain_reg_genes,gr.row==5)
 brain_down_late <- subset(brain_reg_genes,gr.row==3)
 
-all_interesting_brain <- subset(brain_reg_genes,gr.row %in% c(3,4,5,6,7))
+brain_up_transient <- subset(brain_reg_genes,gr.row %in% c(1))
+brain_down_transient <- subset(brain_reg_genes,gr.row %in% c(2,4))
+
+all_interesting_brain <- subset(brain_reg_genes,gr.row %in% c(3,8,5,6,7))
 
 #heatmap_with_cluster(log10(1+subset(brain_gono_mean[row.names(brain_gono_mean) %in% row.names(all_interesting_brain),],select=c("SF","BF","O"))),'brain',4)
 tpm.Z.interesting <- as.data.frame(t(apply((brain_gono_mean[,c("SF","BF","O")][row.names(brain_gono_mean[,c("SF","BF","O")]) %in% all_interesting_brain$internal.gene_id,]), MARGIN = 1, FUN = scale )))
@@ -152,12 +160,15 @@ colnames(tpm.Z) <- c("SF","BF","O")
 
 hindlegs_reg_genes <- heatmap_with_cluster(tpm.Z,'hindlegs',8)
 
-hindlegs_up_early <- subset(hindlegs_reg_genes,gr.row %in% c(4,7))
+hindlegs_up_early <- subset(hindlegs_reg_genes,gr.row ==8)
 hindlegs_up_late <- subset(hindlegs_reg_genes,gr.row==6)
-hindlegs_down_early <- subset(hindlegs_reg_genes,gr.row==5)
-hindlegs_down_late <- subset(hindlegs_reg_genes,gr.row==3)
+hindlegs_down_early <- subset(hindlegs_reg_genes,gr.row==3)
+hindlegs_down_late <- subset(hindlegs_reg_genes,gr.row==7)
 
-all_interesting_hindlegs <- subset(hindlegs_reg_genes,gr.row %in% c(3,4,5,6,7))
+hindlegs_up_transient <- subset(hindlegs_reg_genes,gr.row %in% c(1,4,5))
+hindlegs_down_transient <- subset(hindlegs_reg_genes,gr.row==2)
+
+all_interesting_hindlegs <- subset(hindlegs_reg_genes,gr.row %in% c(3,6,7,8))
 
 #heatmap_with_cluster(log10(1+subset(hindlegs_gono_mean[row.names(hindlegs_gono_mean) %in% row.names(all_interesting_hindlegs),],select=c("SF","BF","O"))),'hindlegs',4)
 tpm.Z.interesting <- as.data.frame(t(apply((hindlegs_gono_mean[,c("SF","BF","O")][row.names(hindlegs_gono_mean[,c("SF","BF","O")]) %in% all_interesting_hindlegs$internal.gene_id,]), MARGIN = 1, FUN = scale )))
