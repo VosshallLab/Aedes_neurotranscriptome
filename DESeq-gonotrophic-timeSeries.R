@@ -8,7 +8,7 @@ source('~/bioinfo/github/ntx_deseq/ntx_deseq_functions.R')
 # dds_antenna_gono
 
 ####################
-# brain as example
+# ovaries as example
 resovaries_sfo <- results(dds_ovaries_gono,contrast=c("condition","SF","O"))
 
 ovaries_modulated <- vstMat_brain[resovaries_sfo$padj < 0.01,]
