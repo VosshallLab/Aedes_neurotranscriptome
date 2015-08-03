@@ -74,3 +74,12 @@ plotMA(res_SF_male_rostrum,ylim=c(-5,5))
 res_SF_male_abdominal_tip <- results(dds_SF_male_combined,contrast=c("tissue_condition","SF-abdominaltip","male-abdominaltip"))
 plotMA(res_SF_male_abdominal_tip,ylim=c(-5,5))
 
+
+
+#### nix, myo-sex
+res_SF_male_brain["gene16037",] -> nix
+res_SF_male_brain["gene16140",] -> myosex
+
+
+
+
