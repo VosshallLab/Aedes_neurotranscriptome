@@ -2,6 +2,7 @@ library(DESeq2)
 library(ggplot2)
 library(RColorBrewer)
 library(gplots)
+library(reshape2)
 
 setwd('~/bioinfo/github/ntx_deseq/')
 
