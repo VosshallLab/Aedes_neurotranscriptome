@@ -1,14 +1,14 @@
 # male/female fold change calculations
 library(plyr)
 
-write.csv(compiled_means,'compiled_means.csv')
+#write.csv(compiled_means,'compiled_means.csv')
 
 compiled_means <- read.csv('compiled_means.csv',header=TRUE,row.names = 1)
 
 rm(tpm_dimorphic_tpm)
 rm(tpm_dimorphic_tpm.Z)
 
-tpm_dimorphic_tpm <- as.matrix(compiled_means[,c(17:27,29:32)])  # exclude ovaries and male rostrum
+tpm_dimorphic_tpm <- as.matrix(compiled_means[,c(16:27,29:32)])  
 tpm_dimorphic_tpm.Z <- tpm_dimorphic_tpm
 
 #tpm_dimorphic.Z <- apply(tpm_dimorphic_tpm,1,sum)  # no rostrum

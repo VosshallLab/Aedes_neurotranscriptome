@@ -13,12 +13,17 @@ tissue_list <- c("Fe_Ov_SF","Fe_Pa_SF","Fe_Os_SF","Fe_Br_SF","Fe_An_SF","Fe_Rs_S
 
 ### create appropriate empty vectors for tissue means and medians
 
+rm(compiled_means)
+rm(compiled_medians)
+
 compiled_means <- gene_annotations
 compiled_medians <- gene_annotations
 
 ### cycle through tissues and add means/medians to appropriate vectors
 
 library(plyr)
+
+
 
 for (tissue in tissue_list)
 {

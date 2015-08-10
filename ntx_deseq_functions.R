@@ -18,6 +18,56 @@ dimorphism_heatmap <- function(gene_list,tpmMat,maxTPM) {
   )
 }
 
+dimorphism_heatmap_fig8_F <- function(gene_list,tpmMat,maxTPM) {
+  
+  family_subset <- tpmMat[tpmMat$internal.gene_id %in% gene_list,]
+  family_subset$disp_name <- paste(family_subset$vectorbase.RU,family_subset$display.name,sep="-")
+  row.names(family_subset) <- family_subset$disp_name
+  family_subset <- subset(family_subset,select=c("Fe_Br_SF","Fe_An_SF","Fe_FL_SF","Fe_ML_SF","FE_HL_SF","Fe_At_SF","Ma_Br","Ma_An","Ma_FL","Ma_ML","Ma_HL","Ma_At"))
+  
+  fem_sum <- apply(family_subset[,1:6],1,sum)
+  male_sum <- apply(family_subset[,7:12],1,sum)
+  family_subset <- family_subset[order(-fem_sum),]
+  
+  #  row.names(family_subset) <- family_subset$display.name
+ 
+  column_labels <- c("Brain","Antenna","Forelegs","Midlegs","Hindlegs","Abdominal tip","Brain","Antenna","Forelegs","Midlegs","Hindlegs","Abdominal tip")
+  heatmap.2(log10(as.matrix(family_subset)+1),dendrogram="none",Colv=FALSE,Rowv = FALSE,sepwidth=c(.5,.5),
+            trace="none",labCol=column_labels,srtCol=45,density.info="none",
+            key.xlab="Log10(TPM+1)",key.title=NA,
+            #scale = "row",
+            breaks= seq(0,maxTPM,length.out=256),
+            col = colorRampPalette( rev(brewer.pal(9, "RdBu")) )(255)
+            
+            # col = colorRampPalette(rev(brewer.pal(9,"Blues")))(255) 
+            # col = rev(viridis(100))
+  )
+}
+
+dimorphism_heatmap_fig8_M <- function(gene_list,tpmMat,maxTPM) {
+  
+  family_subset <- tpmMat[tpmMat$internal.gene_id %in% gene_list,]
+  family_subset$disp_name <- paste(family_subset$vectorbase.RU,family_subset$display.name,sep="-")
+  row.names(family_subset) <- family_subset$disp_name
+  family_subset <- subset(family_subset,select=c("Fe_Br_SF","Fe_An_SF","Fe_FL_SF","Fe_ML_SF","FE_HL_SF","Fe_At_SF","Ma_Br","Ma_An","Ma_FL","Ma_ML","Ma_HL","Ma_At"))
+  
+  fem_sum <- apply(family_subset[,1:6],1,sum)
+  male_sum <- apply(family_subset[,7:12],1,sum)
+  family_subset <- family_subset[order(male_sum),]
+
+  
+  column_labels <- c("Brain","Antenna","Forelegs","Midlegs","Hindlegs","Abdominal tip","Brain","Antenna","Forelegs","Midlegs","Hindlegs","Abdominal tip")
+  heatmap.2(log10(as.matrix(family_subset)+1),dendrogram="none",Colv=FALSE,Rowv = FALSE,sepwidth=c(.5,.5),
+            trace="none",labCol=column_labels,srtCol=45,density.info="none",
+            key.xlab="Log10(TPM+1)",key.title=NA,
+            #scale = "row",
+            breaks= seq(0,maxTPM,length.out=256),
+            col = colorRampPalette( rev(brewer.pal(9, "RdBu")) )(255)
+            
+            # col = colorRampPalette(rev(brewer.pal(9,"Blues")))(255) 
+            # col = rev(viridis(100))
+  )
+}
 ### function to find a specific tissue from the whole TPM matrix
 
 subset_TPM <- function(tissue_to_find,tpm){
