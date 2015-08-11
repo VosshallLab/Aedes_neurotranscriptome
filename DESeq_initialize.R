@@ -31,6 +31,8 @@ row.names(rawcounts_with_annotation) <- rawcounts_with_annotation$internal.gene_
 tpm_all <- apply(rawcounts_only,2,countToTpm,rawcounts$len)
 tpm_all_with_annotation <- merge(tpm_all,gene_annotations,by="row.names")
 
+
+
 ##### read in library information from CSV file
 
 libprop <- read.csv('annotations/library_info.csv')

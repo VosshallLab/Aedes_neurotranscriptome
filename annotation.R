@@ -46,15 +46,15 @@ library(plyr)
 read.csv('annotation_with_orthodb.csv') -> raw
 
 raw.added <- ddply(raw,'internal.gene_id.x',summarize,
-                   flybase.fbpp.collapsed = paste(flybase.fbpp, sep="-", collapse = "-"),
-                   flybase.fbgn.collapsed = paste(flybase.fbgn, sep="-", collapse = "-"),
-                   flybase.annot.collapsed = paste(flybase.annot, sep="-", collapse = "-"),
-                   flybase.gene.collapsed = paste(flybase.gene, sep="-", collapse = "-"),
-                   orthodb.collapsed = paste(orthodb.group, sep = "-", collapse = "-")
+                   flybase.fbpp.collapsed = paste(fbpp, sep="-", collapse = "-"),
+                   flybase.fbgn.collapsed = paste(fbgn, sep="-", collapse = "-"),
+                   flybase.annot.collapsed = paste(annotation_ID, sep="-", collapse = "-"),
+                   flybase.gene.collapsed = paste(gene_symbol, sep="-", collapse = "-"),
+                   orthodb.collapsed = paste(odb8_og_id, sep = "-", collapse = "-")
 )
 
 raw.original <- unique(subset(raw,select=c("vectorbase.RU","internal.gene_id.x",
-                           "display.name","gene.family","gene.family.specific")))
+                           "display.name.x","gene.family.x","gene.family.specific.x")))
 
 raw.added <- merge(raw.added,
                    raw.original,

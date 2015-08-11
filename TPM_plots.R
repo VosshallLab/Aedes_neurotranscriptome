@@ -2,8 +2,15 @@ library(RColorBrewer)
 library(viridis)
 
 libprop_SF_and_male <- libprop[libprop$condition %in% c("male","SF") & libprop$keep == 1,]
+libprop_all <- libprop[libprop$keep == 1,]
 
 tpm_male_SF <- subset(tpm_all_with_annotation,select=c(row.names(libprop_SF_and_male),colnames(gene_annotations)))
+row.names(tpm_male_SF) <- tpm_male_SF$internal.gene_id
+write.csv(tpm_male_SF,'TPM_male_SF.csv')
+
+tpm_all_for_CSV <- subset(tpm_all_with_annotation,select=c(row.names(libprop_all),colnames(gene_annotations)))
+row.names(tpm_all_for_CSV) <- tpm_all_for_CSV$internal.gene_id
+write.csv(tpm_all_for_CSV,'TPM_all.csv')
 
 
 ### list of tissues of interest for the annotation plots
