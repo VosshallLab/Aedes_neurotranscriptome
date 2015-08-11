@@ -54,3 +54,15 @@ dimorphism_heatmap_fig8(gene_list = female_all$x,tpmMat = compiled_means,maxTPM 
 venn.diagram(unstack(melt.fem.legs),euler.d=TRUE,scaled=TRUE,'femalevenn.tiff',imagetype='tiff')
 
 venn.diagram(unstack(melt.male.legs),euler.d=TRUE,scaled=TRUE,'malevenn.tiff',imagetype='tiff')
+
+
+##### to export as supplementals
+
+annotation_subset <- subset(gene_annotations,select=c("vectorbase.RU","display.name"))
+
+write.csv(merge(annotation_subset,as.data.frame(antenna),by="row.names"),'sex_dimorphism_antenna.csv')
+write.csv(merge(annotation_subset,as.data.frame(brain),by="row.names"),'sex_dimorphism_brain.csv')
+write.csv(merge(annotation_subset,as.data.frame(hl),by="row.names"),'sex_dimorphism_hindlegs.csv')
+write.csv(merge(annotation_subset,as.data.frame(fl),by="row.names"),'sex_dimorphism_forelegs.csv')
+write.csv(merge(annotation_subset,as.data.frame(ml),by="row.names"),'sex_dimorphism_midlegs.csv')
+write.csv(merge(annotation_subset,as.data.frame(abdtip),by="row.names"),'sex_dimorphism_abdominal_tip.csv')

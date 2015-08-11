@@ -116,3 +116,25 @@ dev.off()
 plotMA(O_at,ylim=c(-5,5))
 #dev.off()
 
+
+
+#### write csv files for supplemental files
+
+annotation_subset <- subset(gene_annotations,select=c("vectorbase.RU","display.name"))
+padj_cutoff <- 0.1
+
+write.csv(merge(annotation_subset,as.data.frame(O_ovaries[!is.na(O_ovaries$padj) & O_ovaries$padj < padj_cutoff,]),by="row.names"),'O_ovaries.csv')
+write.csv(merge(annotation_subset,as.data.frame(O_at[!is.na(O_at$padj) & O_at$padj < padj_cutoff,]),by="row.names"),'O_at.csv')
+write.csv(merge(annotation_subset,as.data.frame(O_forelegs[!is.na(O_forelegs$padj) & O_forelegs$padj < padj_cutoff,]),by="row.names"),'O_forelegs.csv')
+write.csv(merge(annotation_subset,as.data.frame(O_midlegs[!is.na(O_midlegs$padj) & O_midlegs$padj < padj_cutoff,]),by="row.names"),'O_midlegs.csv')
+write.csv(merge(annotation_subset,as.data.frame(O_hindlegs[!is.na(O_hindlegs$padj) & O_hindlegs$padj < padj_cutoff,]),by="row.names"),'O_hindlegs.csv')
+write.csv(merge(annotation_subset,as.data.frame(O_antenna[!is.na(O_antenna$padj) & O_antenna$padj < padj_cutoff,]),by="row.names"),'O_antenna.csv')
+write.csv(merge(annotation_subset,as.data.frame(O_brain[!is.na(O_brain$padj) & O_brain$padj < padj_cutoff,]),by="row.names"),'O_brain.csv')
+
+write.csv(merge(annotation_subset,as.data.frame(BF_brain[!is.na(BF_brain$padj) & BF_brain$padj < padj_cutoff,]),by="row.names"),'BF_brain.csv')
+write.csv(merge(annotation_subset,as.data.frame(BF_antenna[!is.na(BF_antenna$padj) & BF_antenna$padj < padj_cutoff,]),by="row.names"),'BF_antenna.csv')
+write.csv(merge(annotation_subset,as.data.frame(BF_rostrum[!is.na(BF_rostrum$padj) & BF_rostrum$padj < padj_cutoff,]),by="row.names"),'BF_rostrum.csv')
+write.csv(merge(annotation_subset,as.data.frame(BF_hindlegs[!is.na(BF_hindlegs$padj) & BF_hindlegs$padj < padj_cutoff,]),by="row.names"),'BF_hindlegs.csv')
+
+
+
