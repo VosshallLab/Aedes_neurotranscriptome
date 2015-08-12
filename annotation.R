@@ -1,7 +1,7 @@
 # annotation
 
 
-updated_annotations <- read.csv('~/Dropbox/writing/Aedes neurotranscriptome paper/CURRENT DRAFT/Supplemental data/Additional File 4 - AaegL2.1RU gene description DONE/Additional file 4 - AaegL2.1RU annotation.csv')
+updated_annotations <- read.csv('~/Dropbox/writing/Aedes neurotranscriptome paper/CURRENT DRAFT/Supplemental data/Additional File 3 - AaegL2.1RU gene description DONE/Additional file 3 - AaegL2.1RU annotation.csv')
 
 ###### everything below has been run already and consolidated into the annotation file
 ###### run on 2015-07-30 and saved in the Supplemental Data File 4 as the following

@@ -8,7 +8,7 @@ row.names(gene_annotations) <- gene_annotations$Geneid
 gene_annotations$internal.gene_id <- gene_annotations$Geneid
 gene_annotations <- subset(gene_annotations, select=c("internal.gene_id","Chr","Start","End","Strand","Length"))
 
-manual_annotations <- read.csv('~/Dropbox/writing/Aedes neurotranscriptome paper/CURRENT DRAFT/Supplemental data/Additional File 4 - AaegL2.1RU gene description DONE/Additional file 4 - AaegL2.1RU annotation.csv')
+manual_annotations <- read.csv('~/Dropbox/writing/Aedes neurotranscriptome paper/CURRENT DRAFT/Supplemental data/Additional File 3 - AaegL2.1RU gene description DONE/Additional file 3 - AaegL2.1RU annotation.csv')
 row.names(manual_annotations) <- manual_annotations$internal.gene_id
 
 gene_annotations <- merge(gene_annotations, manual_annotations,by="internal.gene_id")
