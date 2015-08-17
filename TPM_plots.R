@@ -36,11 +36,11 @@ for (tissue in tissue_list)
 {
   tissue_select <- subset_TPM(tissue,tpm_male_SF)
   
-  compiled_means$temp_mean <- tissue_select$mean
-  compiled_medians$temp_median <- tissue_select$median
+  compiled_means$"temp_mean" <- tissue_select$mean
+  compiled_medians$"temp_median" <- tissue_select$median
   
-  compiled_means <- rename(compiled_means,replace = c("temp_mean" = tissue))
-  compiled_medians <- rename(compiled_medians,replace = c("temp_median" = tissue))
+  names(compiled_means)[names(compiled_means)=="temp_mean"] <- tissue
+  names(compiled_medians)[names(compiled_medians)=="temp_median"] <- tissue
   }
 
 
