@@ -64,6 +64,26 @@ genefamily_heatmap <- function(genefam,tpmMat,fname,maxTPM) {
   dev.off()
 }
 
+manual_heatmap <- function(genefam,tpmMat,fname,maxTPM) {
+  
+  pdf(file=fname,width=8)
+  
+  family_subset <- tpmMat[tpmMat$internal.gene_id %in% genefam,]
+  #  row.names(family_subset) <- family_subset$display.name
+  disp_name <- paste(family_subset$vectorbase.RU,family_subset$display.name,sep="-")
+  family_subset <- subset(family_subset,select=tissue_list)
+  column_labels <- c("Ovaries","Palp","Proboscis","Brain","Antenna","Rostrum","Forelegs","Midlegs","Hindlegs","Abdominal tip","Brain","Antenna","Rostrum","Forelegs","Midlegs","Hindlegs","Abdominal tip")
+  heatmap.2(log10(as.matrix(family_subset)+1),dendrogram="none",Colv=FALSE,sepwidth=c(.5,.5),
+            trace="none",labCol=column_labels,srtCol=45,density.info="none",labRow=disp_name,
+            key.xlab="Log10(TPM+1)",key.title=NA,
+            breaks= seq(0,maxTPM,length.out=256),
+            col = colorRampPalette( rev(brewer.pal(9, "RdBu")) )(255)
+            # col = colorRampPalette(rev(brewer.pal(9,"Blues")))(255) 
+            # col = rev(viridis(100))
+  )
+  dev.off()
+}
+
 family_list <- levels(gene_annotations$gene.family)
 family_list <- family_list[2:length(family_list)]
 
@@ -73,5 +93,43 @@ for (maxTPM in c(1,1.5,2,2.5,3,3.5,4,5)) {
     genefamily_heatmap(fam,compiled_means,fname,maxTPM)
   }
 }
+
+ppk_temp <- c("gene11000",
+"gene1183",
+              "gene10535",
+              "gene13236",
+              "gene9054",
+              "gene9202",
+              "gene6186",
+              "gene13798",
+              "gene13799",
+              "gene15576",
+              "gene7184",
+              "gene10988",
+              "gene10989",
+              "gene10990",
+              "gene11417",
+              "gene11522",
+              "gene14546",
+              "gene14549",
+              "gene14571",
+              "gene2343",
+              "gene7416",
+              "gene7417",
+              "gene7426",
+              "gene764",
+              "gene11803",
+              "gene11804",
+              "gene11805",
+              "gene11525",
+              "gene7933",
+              "gene13416",
+              "gene1378",
+              "gene9523",
+              "gene3871",
+              "gene10987",
+              "gene7423",
+              "gene7720",
+              "gene11802")
 
 

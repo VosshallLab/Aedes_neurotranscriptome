@@ -1,12 +1,21 @@
-##### flowchart to produce figures
+##### flowchart to produce figures for Matthews et al., BMC Genomics, 2015
 
+
+# load required libraries
+library(DESeq2)
+library(ggplot2)
+library(RColorBrewer)
+library(gplots)
+library(reshape2)
+
+# set working directory to github repository
+setwd('~/bioinfo/github/ntx_deseq/')
+
+
+# initialize environment by loading/generating counts and annotations
 source('~/bioinfo/github/ntx_deseq/DESeq_initialize.R')
 
-source('~/bioinfo/github/ntx_deseq/DESeq_annotation_merge.R')
-
-#source('~/bioinfo/github/ntx_deseq/annotation.R')
-updated_annotations <- read.csv('~/Dropbox/writing/Aedes neurotranscriptome paper/CURRENT DRAFT/Supplemental data/Additional File 3 - AaegLRU gene description DONE/Additional file 3 - AaegLRU annotation.csv')
-
+# manipulate matrices to generate annotation plots
 source('~/bioinfo/github/ntx_deseq/DESeq_annotation_plots.R')
 
 source('~/bioinfo/github/ntx_deseq/DESeq_annotation_results.R')

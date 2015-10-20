@@ -1,6 +1,5 @@
 ### generate results
 
-
 ## antenna
 res_SF_male_antenna <- results(dds_SF_male_combined,contrast=c("tissue_condition","SF-antenna","male-antenna"))
 res_SF_male_antenna$internal.gene_id <- gene_annotations$internal.gene_id
