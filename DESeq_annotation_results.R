@@ -55,6 +55,7 @@ res_SF_male_forelegs$Gene <- res_SF_male_forelegs$display
 res_SF_male_antenna <- results(dds_SF_male_combined,contrast=c("tissue_condition","SF-antenna","male-antenna"))
 plotMA(res_SF_male_antenna,ylim=c(-5,5))
 
+
 res_SF_male_brain <- results(dds_SF_male_combined,contrast=c("tissue_condition","SF-brain","male-brain"))
 plotMA(res_SF_male_brain,ylim=c(-5,5))
 
