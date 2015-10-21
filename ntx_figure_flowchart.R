@@ -7,6 +7,8 @@ library(ggplot2)
 library(RColorBrewer)
 library(gplots)
 library(reshape2)
+library(plyr)
+library(VennDiagram)
 
 # set working directory to github repository
 setwd('~/bioinfo/github/ntx_deseq/')
@@ -19,6 +21,8 @@ source('~/bioinfo/github/ntx_deseq/DESeq_initialize.R')
 source('~/bioinfo/github/ntx_deseq/DESeq_annotation_plots.R')
 
 source('~/bioinfo/github/ntx_deseq/DESeq_annotation_results.R')
+
+source('~/bioinfo/github/ntx_deseq/DESeq-figure8-dimorphism.R')
 
 source('~/bioinfo/github/ntx_deseq/TPM_plots.R')
 

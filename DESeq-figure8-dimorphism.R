@@ -1,10 +1,10 @@
-### dimorphism plots, august 4, 2015
+### sexual dimorphism plots, October 21, 2015
 
 "gene16037" -> nix
 "gene16140" -> myosex
 
 FC_cutoff <- 3
-padj_cutoff <- 0.1
+padj_cutoff <- 0.01
 
 antenna <- res_SF_male_antenna[!is.na(res_SF_male_antenna$padj) & res_SF_male_antenna$padj < padj_cutoff,]
 brain <- res_SF_male_brain[!is.na(res_SF_male_brain$padj) & res_SF_male_brain$padj < padj_cutoff,]
@@ -50,9 +50,9 @@ count(melt.fem.legs$value)[count(melt.fem.legs$value)$freq %in% c(3,4),] -> fema
 dimorphism_heatmap_fig8(gene_list = male_all$x,tpmMat = compiled_means,maxTPM = 2)
 dimorphism_heatmap_fig8(gene_list = female_all$x,tpmMat = compiled_means,maxTPM = 4)
 
+# generate venn diagrams (as TIFF files)
 
 venn.diagram(unstack(melt.fem.legs),euler.d=TRUE,scaled=TRUE,'femalevenn.tiff',imagetype='tiff')
-
 venn.diagram(unstack(melt.male.legs),euler.d=TRUE,scaled=TRUE,'malevenn.tiff',imagetype='tiff')
 
 
