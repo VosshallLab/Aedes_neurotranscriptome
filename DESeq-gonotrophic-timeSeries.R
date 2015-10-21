@@ -1,7 +1,5 @@
 #### set up to look at gene expression in 3 tissues we have three time-points for: brain, antenna, hindlegs
 
-source('~/bioinfo/github/ntx_deseq/ntx_deseq_functions.R')
-
 ## DESeq variables are:
 # dds_hindlegs_gono
 # dds_brain_gono
@@ -77,7 +75,7 @@ for (cond in cond_list)
 tpm.Z <- as.data.frame(t(apply((antenna_gono_mean[,c("SF","BF","O")][row.names(antenna_gono_mean[,c("SF","BF","O")]) %in% modGenesantenna,]), MARGIN = 1, FUN = scale )))
 colnames(tpm.Z) <- c("SF","BF","O")
 
-antenna_reg_genes <- heatmap_with_cluster(tpm.Z,'antenna',8)
+antenna_reg_genes <- heatmap_with_cluster(tpm.Z,'antenna',9)
 
 antenna_up_early <- subset(antenna_reg_genes,gr.row==1)
 antenna_up_late <- subset(antenna_reg_genes,gr.row==3)
@@ -92,7 +90,7 @@ all_interesting_antenna <- subset(antenna_reg_genes,gr.row %in% c(1,3,4,7))
 #heatmap_with_cluster(log10(1+subset(antenna_gono_mean[row.names(antenna_gono_mean) %in% row.names(all_interesting_antenna),],select=c("SF","BF","O"))),'antenna',4)
 tpm.Z.interesting <- as.data.frame(t(apply((antenna_gono_mean[,c("SF","BF","O")][row.names(antenna_gono_mean[,c("SF","BF","O")]) %in% all_interesting_antenna$internal.gene_id,]), MARGIN = 1, FUN = scale )))
 colnames(tpm.Z.interesting) <- c("SF","BF","O")
-heatmap_with_cluster(tpm.Z.interesting,'antenna',4)
+heatmap_with_cluster(tpm.Z.interesting,'antenna_interesting',4)
 
 
 ### brain
@@ -115,7 +113,7 @@ for (cond in cond_list)
 tpm.Z <- as.data.frame(t(apply((brain_gono_mean[,c("SF","BF","O")][row.names(brain_gono_mean[,c("SF","BF","O")]) %in% modGenesbrain,]), MARGIN = 1, FUN = scale )))
 colnames(tpm.Z) <- c("SF","BF","O")
 
-brain_reg_genes <- heatmap_with_cluster(tpm.Z,'brain',8)
+brain_reg_genes <- heatmap_with_cluster(tpm.Z,'brain',9)
 
 brain_up_early <- subset(brain_reg_genes,gr.row %in% c(8,7))
 brain_up_late <- subset(brain_reg_genes,gr.row==6)
@@ -130,7 +128,7 @@ all_interesting_brain <- subset(brain_reg_genes,gr.row %in% c(3,8,5,6,7))
 #heatmap_with_cluster(log10(1+subset(brain_gono_mean[row.names(brain_gono_mean) %in% row.names(all_interesting_brain),],select=c("SF","BF","O"))),'brain',4)
 tpm.Z.interesting <- as.data.frame(t(apply((brain_gono_mean[,c("SF","BF","O")][row.names(brain_gono_mean[,c("SF","BF","O")]) %in% all_interesting_brain$internal.gene_id,]), MARGIN = 1, FUN = scale )))
 colnames(tpm.Z.interesting) <- c("SF","BF","O")
-heatmap_with_cluster(tpm.Z.interesting,'brain',4)
+heatmap_with_cluster(tpm.Z.interesting,'brain_interesting',4)
 
 
 
@@ -158,7 +156,7 @@ for (cond in cond_list)
 tpm.Z <- as.data.frame(t(apply((hindlegs_gono_mean[,c("SF","BF","O")][row.names(hindlegs_gono_mean[,c("SF","BF","O")]) %in% modGeneshindlegs,]), MARGIN = 1, FUN = scale )))
 colnames(tpm.Z) <- c("SF","BF","O")
 
-hindlegs_reg_genes <- heatmap_with_cluster(tpm.Z,'hindlegs',8)
+hindlegs_reg_genes <- heatmap_with_cluster(tpm.Z,'hindlegs',9)
 
 hindlegs_up_early <- subset(hindlegs_reg_genes,gr.row ==8)
 hindlegs_up_late <- subset(hindlegs_reg_genes,gr.row==6)
@@ -173,7 +171,7 @@ all_interesting_hindlegs <- subset(hindlegs_reg_genes,gr.row %in% c(3,6,7,8))
 #heatmap_with_cluster(log10(1+subset(hindlegs_gono_mean[row.names(hindlegs_gono_mean) %in% row.names(all_interesting_hindlegs),],select=c("SF","BF","O"))),'hindlegs',4)
 tpm.Z.interesting <- as.data.frame(t(apply((hindlegs_gono_mean[,c("SF","BF","O")][row.names(hindlegs_gono_mean[,c("SF","BF","O")]) %in% all_interesting_hindlegs$internal.gene_id,]), MARGIN = 1, FUN = scale )))
 colnames(tpm.Z.interesting) <- c("SF","BF","O")
-heatmap_with_cluster(tpm.Z.interesting,'hindlegs',4)
+heatmap_with_cluster(tpm.Z.interesting,'hindlegs_interesting',4)
 
 ##############
 antenna_gene4252.tpm <- antenna.tpm["gene4252",]

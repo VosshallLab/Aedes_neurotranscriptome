@@ -4,7 +4,7 @@
 "gene16140" -> myosex
 
 FC_cutoff <- 3
-padj_cutoff <- 0.01
+padj_cutoff <- 0.1
 
 antenna <- res_SF_male_antenna[!is.na(res_SF_male_antenna$padj) & res_SF_male_antenna$padj < padj_cutoff,]
 brain <- res_SF_male_brain[!is.na(res_SF_male_brain$padj) & res_SF_male_brain$padj < padj_cutoff,]
@@ -47,8 +47,8 @@ rownames(melt.male.legs) <- NULL
 count(melt.male.legs$value)[count(melt.male.legs$value)$freq %in% c(3,4),] -> male_all
 count(melt.fem.legs$value)[count(melt.fem.legs$value)$freq %in% c(3,4),] -> female_all
 
-dimorphism_heatmap_fig8(gene_list = male_all$x,tpmMat = compiled_means,maxTPM = 2)
-dimorphism_heatmap_fig8(gene_list = female_all$x,tpmMat = compiled_means,maxTPM = 4)
+dimorphism_heatmap_fig8_M(gene_list = male_all$x,tpmMat = compiled_means,maxTPM = 2)
+dimorphism_heatmap_fig8_F(gene_list = female_all$x,tpmMat = compiled_means,maxTPM = 4)
 
 # generate venn diagrams (as TIFF files)
 

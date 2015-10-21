@@ -20,8 +20,8 @@ tissue_list <- c("Fe_Ov_SF","Fe_Pa_SF","Fe_Os_SF","Fe_Br_SF","Fe_An_SF","Fe_Rs_S
 
 ### create appropriate empty vectors for tissue means and medians
 
-rm(compiled_means)
-rm(compiled_medians)
+if(exists('compiled_means')) {rm(compiled_means)}
+if(exists('compiled_medians')) {rm(compiled_medians)}
 
 compiled_means <- gene_annotations
 compiled_medians <- gene_annotations
@@ -29,8 +29,6 @@ compiled_medians <- gene_annotations
 ### cycle through tissues and add means/medians to appropriate vectors
 
 library(plyr)
-
-
 
 for (tissue in tissue_list)
 {
@@ -50,6 +48,7 @@ genefamily_heatmap <- function(genefam,tpmMat,fname,maxTPM) {
   
   family_subset <- tpmMat[tpmMat$gene.family %in% genefam,]
 #  row.names(family_subset) <- family_subset$display.name
+  
   disp_name <- paste(family_subset$vectorbase.RU,family_subset$display.name,sep="-")
   family_subset <- subset(family_subset,select=tissue_list)
   column_labels <- c("Ovaries","Palp","Proboscis","Brain","Antenna","Rostrum","Forelegs","Midlegs","Hindlegs","Abdominal tip","Brain","Antenna","Rostrum","Forelegs","Midlegs","Hindlegs","Abdominal tip")
@@ -90,12 +89,13 @@ family_list <- family_list[2:length(family_list)]
 for (maxTPM in c(1,1.5,2,2.5,3,3.5,4,5)) {
   for (fam in family_list)  {
     fname = paste(paste(paste("plots",fam,sep="/"),maxTPM,sep="."),"pdf",sep=".")
-    genefamily_heatmap(fam,compiled_means,fname,maxTPM)
+    if(!fam %in% c("Neurotransmitter receptor")) {
+      genefamily_heatmap(fam,compiled_means,fname,maxTPM) }
   }
 }
 
 ppk_temp <- c("gene11000",
-"gene1183",
+              "gene1183",
               "gene10535",
               "gene13236",
               "gene9054",

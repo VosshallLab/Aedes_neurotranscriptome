@@ -177,7 +177,7 @@ heatmap_with_cluster <- function(mydata,tissue,clustNum)
   
   
   
-  rowLabels <- updated_annotations[updated_annotations$internal.gene_id %in% row.names(mydata),]
+  rowLabels <- gene_annotations[gene_annotations$internal.gene_id %in% row.names(mydata),]
   
   cl.row <- hclustfunc(distfunc(mydata))
   
@@ -201,7 +201,7 @@ heatmap_with_cluster <- function(mydata,tissue,clustNum)
   
   cluster_data <- as.data.frame(gr.row)
   cluster_data$internal.gene_id = row.names(cluster_data)
-  merge(cluster_data,updated_annotations,by="internal.gene_id") -> cluster_data
+  merge(cluster_data,gene_annotations,by="internal.gene_id") -> cluster_data
   
   write.csv(cluster_data,paste(tissue,'_cluster_data.csv',sep=''))
   
