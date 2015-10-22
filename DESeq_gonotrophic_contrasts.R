@@ -69,52 +69,52 @@ O_ovaries[!is.na(O_ovaries$padj) & O_ovaries$padj < ALPHA,] -> sigO_ovaries
 # print MA plots and volcano plots for all
 
 
-pdf("plots/gono/MA_BF_brain.pdf",width=6)
+pdf("plots/gono/MA_BF_brain.pdf",width=8,height=6)
 plotMA(BF_brain,ylim=c(-5,5),alpha=ALPHA)
 dev.off()
 
-pdf("plots/gono/MA_BF_antenna.pdf",width=6)
+pdf("plots/gono/MA_BF_antenna.pdf",width=8,height=6)
 plotMA(BF_antenna,ylim=c(-5,5),alpha=ALPHA)
 dev.off()
 
-pdf("plots/gono/MA_BF_hindlegs.pdf",width=6)
+pdf("plots/gono/MA_BF_hindlegs.pdf",width=8,height=6)
 plotMA(BF_hindlegs,ylim=c(-5,5),alpha=ALPHA)
 dev.off()
 
-pdf("plots/gono/MA_BF_rostrum.pdf",width=6)
+pdf("plots/gono/MA_BF_rostrum.pdf",width=8,height=6)
 plotMA(BF_rostrum,ylim=c(-5,5),alpha=ALPHA)
 dev.off()
 
 #### O
 
-pdf("plots/gono/MA_O_brain.pdf",width=6)
+pdf("plots/gono/MA_O_brain.pdf",width=8,height=6)
 plotMA(O_brain,ylim=c(-5,5),alpha=ALPHA)
 dev.off()
 
-pdf("plots/gono/MA_O_antenna.pdf",width=6)
+pdf("plots/gono/MA_O_antenna.pdf",width=8,height=6)
 plotMA(O_antenna,ylim=c(-5,5),alpha=ALPHA)
 dev.off()
 
-pdf("plots/gono/MA_O_hindlegs.pdf",width=6)
+pdf("plots/gono/MA_O_hindlegs.pdf",width=8,height=6)
 plotMA(O_hindlegs,ylim=c(-5,5),alpha=ALPHA)
 dev.off()
 
 
 
 
-pdf("plots/gono/MA_O_midlegs.pdf",width=6)
+pdf("plots/gono/MA_O_midlegs.pdf",width=8,height=6)
 plotMA(O_midlegs,ylim=c(-5,5),alpha=ALPHA)
 dev.off()
 
-pdf("plots/gono/MA_O_forelegs.pdf",width=6)
+pdf("plots/gono/MA_O_forelegs.pdf",width=8,height=6)
 plotMA(O_forelegs,ylim=c(-5,5),alpha=ALPHA)
 dev.off()
 
-pdf("plots/gono/MA_O_ovaries.pdf",width=6)
+pdf("plots/gono/MA_O_ovaries.pdf",width=8,height=6)
 plotMA(O_ovaries,ylim=c(-5,5),alpha=ALPHA)
 dev.off()
 
-pdf("plots/gono/MA_O_abdominal_tip.pdf",width=6)
+pdf("plots/gono/MA_O_abdominal_tip.pdf",width=8,height=6)
 plotMA(O_at,ylim=c(-5,5),alpha=ALPHA)
 dev.off()
 
