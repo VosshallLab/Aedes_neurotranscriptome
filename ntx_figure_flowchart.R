@@ -18,7 +18,6 @@ source('~/bioinfo/github/ntx_deseq/DESeq_initialize.R')
 # manipulate matrices to generate annotation plots
 source('~/bioinfo/github/ntx_deseq/DESeq_annotation_plots.R')
 
-
 ## TPM heatmaps (figures 4-7)
 source('~/bioinfo/github/ntx_deseq/TPM_plots.R')
 
@@ -29,7 +28,7 @@ source('~/bioinfo/github/ntx_deseq/DESeq-figure8-dimorphism.R')
 ## figure 9 - gonotrophic
 source('~/bioinfo/github/ntx_deseq/DESeq_gonotrophic.R')
 source('~/bioinfo/github/ntx_deseq/DESeq_gonotrophic_contrasts.R')
-
-source('~/bioinfo/github/ntx_deseq/DESeq-orcoFigure.R')
-
 source('~/bioinfo/github/ntx_deseq/DESeq-gonotrophic-timeSeries.R')
+
+## orco analysis (figure 6)
+source('~/bioinfo/github/ntx_deseq/DESeq-orcoFigure.R')

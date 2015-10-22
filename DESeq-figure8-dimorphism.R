@@ -4,7 +4,7 @@
 "gene16140" -> myosex
 
 FC_cutoff <- 3
-padj_cutoff <- 0.1
+padj_cutoff <- 0.01
 
 antenna <- res_SF_male_antenna[!is.na(res_SF_male_antenna$padj) & res_SF_male_antenna$padj < padj_cutoff,]
 brain <- res_SF_male_brain[!is.na(res_SF_male_brain$padj) & res_SF_male_brain$padj < padj_cutoff,]

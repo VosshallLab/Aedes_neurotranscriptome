@@ -114,9 +114,9 @@ pdf("plots/gono/MA_O_ovaries.pdf",width=6)
 plotMA(O_ovaries,ylim=c(-5,5),alpha=ALPHA)
 dev.off()
 
-#pdf("plots/gono/MA_O_abdominal_tip.pdf",width=6)
+pdf("plots/gono/MA_O_abdominal_tip.pdf",width=6)
 plotMA(O_at,ylim=c(-5,5),alpha=ALPHA)
-#dev.off()
+dev.off()
 
 
 

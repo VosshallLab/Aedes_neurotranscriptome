@@ -75,7 +75,7 @@ for (cond in cond_list)
 tpm.Z <- as.data.frame(t(apply((antenna_gono_mean[,c("SF","BF","O")][row.names(antenna_gono_mean[,c("SF","BF","O")]) %in% modGenesantenna,]), MARGIN = 1, FUN = scale )))
 colnames(tpm.Z) <- c("SF","BF","O")
 
-antenna_reg_genes <- heatmap_with_cluster(tpm.Z,'antenna',9)
+antenna_reg_genes <- heatmap_with_cluster(tpm.Z,'antenna',8)
 
 antenna_up_early <- subset(antenna_reg_genes,gr.row==1)
 antenna_up_late <- subset(antenna_reg_genes,gr.row==3)
@@ -113,7 +113,7 @@ for (cond in cond_list)
 tpm.Z <- as.data.frame(t(apply((brain_gono_mean[,c("SF","BF","O")][row.names(brain_gono_mean[,c("SF","BF","O")]) %in% modGenesbrain,]), MARGIN = 1, FUN = scale )))
 colnames(tpm.Z) <- c("SF","BF","O")
 
-brain_reg_genes <- heatmap_with_cluster(tpm.Z,'brain',9)
+brain_reg_genes <- heatmap_with_cluster(tpm.Z,'brain',8)
 
 brain_up_early <- subset(brain_reg_genes,gr.row %in% c(8,7))
 brain_up_late <- subset(brain_reg_genes,gr.row==6)
@@ -156,7 +156,7 @@ for (cond in cond_list)
 tpm.Z <- as.data.frame(t(apply((hindlegs_gono_mean[,c("SF","BF","O")][row.names(hindlegs_gono_mean[,c("SF","BF","O")]) %in% modGeneshindlegs,]), MARGIN = 1, FUN = scale )))
 colnames(tpm.Z) <- c("SF","BF","O")
 
-hindlegs_reg_genes <- heatmap_with_cluster(tpm.Z,'hindlegs',9)
+hindlegs_reg_genes <- heatmap_with_cluster(tpm.Z,'hindlegs',8)
 
 hindlegs_up_early <- subset(hindlegs_reg_genes,gr.row ==8)
 hindlegs_up_late <- subset(hindlegs_reg_genes,gr.row==6)
