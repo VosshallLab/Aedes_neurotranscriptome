@@ -34,6 +34,10 @@ for (tissue in tissue_list)
 {
   tissue_select <- subset_TPM(tissue,tpm_male_SF)
   
+  compiled_means <- compiled_means[ order(row.names(compiled_means)), ]
+  compiled_medians <- compiled_medians[ order(row.names(compiled_medians)), ]
+  tissue_select <- tissue_select[ order(row.names(tissue_select)), ]
+  
   compiled_means$"temp_mean" <- tissue_select$mean
   compiled_medians$"temp_median" <- tissue_select$median
   
