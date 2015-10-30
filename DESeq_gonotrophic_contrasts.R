@@ -120,7 +120,7 @@ plotMA(O_at,ylim=c(-5,5),alpha=ALPHA)
 #### write csv files for supplemental files
 
 annotation_subset <- subset(gene_annotations,select=c("vectorbase.RU","display.name"))
-padj_cutoff <- 0.1
+padj_cutoff <- 0.01
 
 write.csv(merge(annotation_subset,as.data.frame(O_ovaries[!is.na(O_ovaries$padj) & O_ovaries$padj < padj_cutoff,]),by="row.names"),'O_ovaries.csv')
 write.csv(merge(annotation_subset,as.data.frame(O_at[!is.na(O_at$padj) & O_at$padj < padj_cutoff,]),by="row.names"),'O_at.csv')
