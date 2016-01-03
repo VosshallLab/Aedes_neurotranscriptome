@@ -25,3 +25,5 @@ gene_lookup_AAEL = function(gene_list){
 ammonium_plot <- ntx_gene_plot(c("gene13896","gene9231","gene9235"))
 
 rh50_plot <- ntx_gene_plot(c("gene13896"))
+
+brp <-  ntx_gene_plot(c("gene12095"))
